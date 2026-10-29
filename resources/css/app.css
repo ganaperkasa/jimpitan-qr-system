@@ -1,0 +1,93 @@
+@import 'tailwindcss';
+
+@source '../../vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php';
+@source '../../storage/framework/views/*.php';
+@source '../**/*.blade.php';
+@source '../**/*.js';
+
+/* Palet Jimpitan RT: latar navy gelap bergaya Niobe, aksen warna-warni. */
+@theme {
+    --font-sans: 'Plus Jakarta Sans', ui-sans-serif, system-ui, sans-serif;
+
+    --color-ink-950: #101226;
+    --color-ink-900: #161933;
+    --color-ink-800: #1a1e3e;
+    --color-field: #12152e;
+    --color-edge: #2a2e55;
+    --color-edge-strong: #3a3f6b;
+
+    --color-snow: #eef0ff;
+    --color-soft: #c3c9e6;
+    --color-muted: #a9b0d0;
+
+    --color-coral: #ff6b5a;
+    --color-sun: #ffb547;
+    --color-mint: #2ee6c5;
+    --color-iris: #8b7cff;
+    --color-lilac: #a99bff;
+    --color-blush: #ff8dbe;
+    --color-hot: #ff5fa2;
+}
+
+@layer base {
+    html {
+        -webkit-tap-highlight-color: transparent;
+    }
+    body {
+        background-color: var(--color-ink-950);
+    }
+}
+
+@layer components {
+    .card {
+        @apply rounded-3xl border border-edge bg-ink-800 p-4;
+    }
+    .label {
+        @apply mb-1.5 block text-[13px] font-semibold text-soft;
+    }
+    .field {
+        @apply h-[52px] w-full rounded-2xl border border-edge-strong bg-field px-4 text-[15px] text-snow placeholder:text-muted focus:border-sun focus:outline-none;
+    }
+    .field-area {
+        @apply w-full rounded-2xl border border-edge-strong bg-field px-4 py-3 text-[15px] text-snow placeholder:text-muted focus:border-sun focus:outline-none;
+    }
+    .error-text {
+        @apply mt-1.5 text-[13px] font-semibold text-blush;
+    }
+    .btn {
+        @apply flex h-14 w-full items-center justify-center gap-2 rounded-2xl text-base font-extrabold text-ink-950 transition active:scale-[.98] disabled:opacity-60;
+    }
+    .btn-warm {
+        @apply bg-linear-to-r from-sun to-coral shadow-lg shadow-coral/30;
+    }
+    .btn-cool {
+        @apply bg-linear-to-r from-mint to-iris shadow-lg shadow-mint/25;
+    }
+    .btn-outline {
+        @apply h-[52px] border border-sun bg-transparent text-[15px] text-sun;
+    }
+    .chip {
+        @apply inline-flex items-center rounded-full px-2.5 py-1 text-[11px] font-bold;
+    }
+}
+
+/* Garis pemindai pada viewfinder */
+@keyframes sapu {
+    0%,
+    100% {
+        top: 10px;
+    }
+    50% {
+        top: calc(100% - 14px);
+    }
+}
+
+/* Kartu QR untuk dicetak */
+@media print {
+    body {
+        background: #fff !important;
+    }
+    .tanpa-cetak {
+        display: none !important;
+    }
+}
